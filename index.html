@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Natural Pharmacy Upsell Page</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // ALTERE O LINK PARA A PÁGINA QUE QUISER MOSTRAR QUANDO O USUÁRIO TENTAR SAIR
+      const link = 'https://upsell21dias.vercel.app/';
+
+      function setBackRedirect(url) {
+        let urlBackRedirect = url;
+        urlBackRedirect = urlBackRedirect =
+          urlBackRedirect.trim() +
+          (urlBackRedirect.indexOf('?') > 0 ? '&' : '?') +
+          document.location.search.replace('?', '').toString();
+
+        history.pushState({}, '', location.href);
+        history.pushState({}, '', location.href);
+        history.pushState({}, '', location.href);
+
+        window.addEventListener('popstate', () => {
+          console.log('onpopstate', urlBackRedirect);
+          setTimeout(() => {
+            location.href = urlBackRedirect;
+          }, 1);
+        });
+      }
+
+      setBackRedirect(link);
+    </script>
+  </body>
+</html>
